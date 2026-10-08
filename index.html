@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CONTACT SITE</title>
+<style>
+:root{--bg:#f4f8f5;--card:#fff;--tx:#14181a;--mut:#667a6e;--bd:#dce6df;--red:#e11d48;--grn:#16a34a;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root{--bg:#0a0d0b;--card:#141a16;--tx:#f1f5f2;--mut:#93a499;--bd:#25302a;--red:#ff4d6d;--grn:#2ee06f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 system-ui,-apple-system,"Noto Sans Bengali","Segoe UI",sans-serif}
+.w{max-width:520px;margin:0 auto;padding:14px}
+header{text-align:center;padding:22px 12px 16px;border-radius:18px;background:linear-gradient(135deg,#e11d4833,#16a34a33);border:1px solid var(--bd)}
+h1{margin:0;font-size:28px;letter-spacing:2px;background:linear-gradient(90deg,var(--red),var(--grn));-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{margin:8px 0 0;font-weight:700;font-size:14px}
+.warn{margin-top:12px;padding:12px;border-radius:14px;border:1px solid var(--red);background:#e11d4814;font-size:14px}
+.warn p{margin:0 0 8px}.warn p:last-child{margin:0;color:var(--mut)}
+.card{margin-top:12px;padding:14px;border-radius:14px;background:var(--card);border:1px solid var(--bd)}
+h2{margin:0 0 10px;font-size:16px}
+.bar{height:8px;border-radius:8px;background:var(--bd);overflow:hidden;margin:6px 0 12px}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--red),var(--grn));transition:.3s}
+.task{display:flex;align-items:center;gap:10px;padding:10px 0;border-top:1px solid var(--bd)}
+.task:first-of-type{border-top:0}
+.ic{font-size:24px}.m{flex:1}.m b{display:block;font-size:15px}.m small{color:var(--mut)}
+.btn{min-width:92px;padding:10px 12px;border:2px solid var(--red);border-radius:10px;background:transparent;color:var(--red);font-weight:700;font-size:14px;cursor:pointer}
+.btn:disabled{opacity:.6;cursor:default}
+.btn.ok{background:var(--grn);border-color:var(--grn);color:#fff;opacity:1}
+.soon .btn{border-color:var(--bd);color:var(--mut)}
+.shot{display:block;text-align:center;padding:16px;border:2px dashed var(--grn);border-radius:12px;color:var(--grn);font-weight:700;cursor:pointer}
+.shot.off{opacity:.45;cursor:not-allowed;border-color:var(--bd);color:var(--mut)}
+.shot input{display:none}
+#prev{display:none;max-width:100%;max-height:220px;margin:10px auto 0;border-radius:10px;border:1px solid var(--bd)}
+#fn{font-size:13px;color:var(--mut);margin-top:6px;text-align:center;word-break:break-all}
+.go{width:100%;margin-top:12px;padding:13px;border:0;border-radius:12px;background:linear-gradient(90deg,var(--red),var(--grn));color:#fff;font-size:16px;font-weight:800;cursor:pointer}
+.go:disabled{opacity:.4;cursor:not-allowed}
+.err{color:var(--red);font-size:13px;min-height:18px;margin-top:6px;text-align:center}
+#unlock{display:none;text-align:center;border:2px solid var(--grn)}
+#unlock .num{font-size:28px;font-weight:800;letter-spacing:1px;margin:6px 0 12px;color:var(--grn)}
+.row{display:flex;gap:8px}
+.row a,.row button{flex:1;padding:12px;border-radius:10px;border:2px solid;font-weight:700;font-size:15px;text-align:center;text-decoration:none;cursor:pointer}
+.wa{background:var(--grn);border-color:var(--grn);color:#fff}
+.cp{background:transparent;border-color:var(--red);color:var(--red)}
+.note{font-size:13px;color:var(--mut);margin-top:10px}
+footer{text-align:center;color:var(--mut);font-size:12px;margin:22px 0 10px}
+</style>
+</head>
+<body>
+<div class="w">
+  <header>
+    <h1>CONTACT SITE</h1>
+    <p>COMPLETE YOUR TASK FOR CONTACT — PRITOM/BREAK</p>
+  </header>
+
+  <div class="warn">
+    <p>⚠️ আপনি যদি এই টেক্সট টি কমপ্লিট না করেন তাহলে আমার সাথে কন্টাক্ট করতে পারবেন না! টেক্সটি কমপ্লিট করার পর একটি স্ক্রিনশট নিবেন এবং সেটি স্ক্রিনশট বক্সে জমা দিবেন।</p>
+    <p>If you don't complete these tasks, you won't be able to contact me! After completing them, take a screenshot and submit it in the screenshot box below.</p>
+  </div>
+
+  <div class="card" id="tasks">
+    <h2>✅ Tasks — Follow &amp; Subscribe</h2>
+    <small id="cnt" style="color:var(--mut)"></small>
+    <div class="bar"><i id="bar"></i></div>
+    <div id="list"></div>
+  </div>
+
+  <div class="card" id="shotCard">
+    <h2>📸 Screenshot Box</h2>
+    <label class="shot off" id="shot">Tap to choose your screenshot<input type="file" id="file" accept="image/*" disabled></label>
+    <img id="prev" alt="Screenshot preview">
+    <div id="fn"></div>
+    <div class="err" id="err"></div>
+    <button class="go" id="submit" disabled>SUBMIT</button>
+    <div class="note" id="hint">Complete all tasks above to unlock the screenshot box.</div>
+  </div>
+
+  <div class="card" id="unlock">
+    <h2>🎉 Thank you! You can contact me now</h2>
+    <div class="num" id="num"></div>
+    <div class="row"><a class="wa" id="wa" target="_blank" rel="noopener">💬 WhatsApp</a><button class="cp" id="copy">Copy</button></div>
+    <div class="note">Please send the same screenshot in the WhatsApp chat so I can confirm your tasks.</div>
+  </div>
+
+  <footer>© CONTACT SITE • PRITOM/BREAK</footer>
+</div>
+
+<script>
+/* ===== SETTINGS ===== */
+var WHATSAPP="01326016780";                 // your number
+var WA_INTL="8801326016780";                // same number with country code (no +)
+var TASKS=[
+ {e:"📸",t:"Follow on Instagram",u:"https://instagram.com/pritom_the_break"},
+ {e:"🐦",t:"Follow on Twitter / X",u:""},   // put the link here when ready, it becomes a required task
+ {e:"👍",t:"Follow on Facebook",u:"https://www.facebook.com/profile.php?id=61572124592372"},
+ {e:"🎵",t:"Follow on TikTok",u:"https://www.tiktok.com/@break_jod"},
+ {e:"▶️",t:"Subscribe on YouTube",u:"https://youtube.com/@pritomff-999?si=XJv4PHsH4ckTw3GA"}
+];
+var WAIT=8;                                  // seconds a visitor must wait after tapping Open
+/* ===================== */
+var $=function(i){return document.getElementById(i)},KEY="cs_unlocked",hasFile=false;
+function el(t,c,x){var e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e}
+var req=TASKS.filter(function(t){return t.u});
+
+TASKS.forEach(function(t){
+  var r=el("div","task"+(t.u?"":" soon")),m=el("div","m"),b=el("button","btn");
+  m.append(el("b","",t.t),el("small","",t.u?"Tap Open, then wait a few seconds":"LOADING... (coming soon)"));
+  if(t.u){b.textContent="Open";b.onclick=function(){start(t,b,r)}}else{b.textContent="Soon";b.disabled=true}
+  r.append(el("span","ic",t.e),m,b);$("list").append(r);
+});
+function start(t,b,r){
+  if(t.done||t.busy)return;
+  window.open(t.u,"_blank","noopener");
+  t.busy=true;var s=WAIT;b.disabled=true;b.textContent="Wait "+s+"s";
+  var iv=setInterval(function(){
+    s--;if(s>0){b.textContent="Wait "+s+"s";return}
+    clearInterval(iv);t.done=true;t.busy=false;b.textContent="✓ Done";b.className="btn ok";update();
+  },1000);
+}
+function allDone(){return req.every(function(t){return t.done})}
+function update(){
+  var n=req.filter(function(t){return t.done}).length;
+  $("cnt").textContent=n+" / "+req.length+" completed";
+  $("bar").style.width=(req.length?n/req.length*100:0)+"%";
+  var ok=allDone();
+  $("file").disabled=!ok;$("shot").className="shot"+(ok?"":" off");
+  $("shot").firstChild.textContent=ok?"Tap to choose your screenshot":"🔒 Complete all tasks first";
+  $("hint").style.display=ok?"none":"block";
+  $("submit").disabled=!(ok&&hasFile);
+}
+$("file").onchange=function(e){
+  var f=e.target.files[0];hasFile=false;$("err").textContent="";$("prev").style.display="none";$("fn").textContent="";
+  if(f){
+    if(!/^image\//.test(f.type)){$("err").textContent="Please choose an image (screenshot).";}
+    else if(f.size>10*1024*1024){$("err").textContent="Image is too large (max 10 MB).";}
+    else{hasFile=true;$("prev").src=URL.createObjectURL(f);$("prev").style.display="block";$("fn").textContent=f.name}
+  }
+  update();
+};
+function reveal(){
+  $("num").textContent="WHATSAPP — "+WHATSAPP;
+  $("wa").href="https://wa.me/"+WA_INTL+"?text="+encodeURIComponent("Hi Pritom/Break, I completed all the tasks. Sending my screenshot now.");
+  $("unlock").style.display="block";$("tasks").style.display="none";$("shotCard").style.display="none";
+  window.scrollTo(0,0);
+}
+$("submit").onclick=function(){
+  if(!(allDone()&&hasFile))return;
+  try{localStorage.setItem(KEY,"1")}catch(e){}
+  reveal();
+};
+$("copy").onclick=function(){
+  var b=$("copy");function ok(){b.textContent="Copied ✓"}
+  function fb(){var a=document.createElement("textarea");a.value=WHATSAPP;document.body.appendChild(a);a.select();try{document.execCommand("copy");ok()}catch(e){}a.remove()}
+  try{navigator.clipboard.writeText(WHATSAPP).then(ok,fb)}catch(e){fb()}
+};
+try{if(localStorage.getItem(KEY)==="1")reveal()}catch(e){}
+update();
+</script>
+</body>
+</html>
